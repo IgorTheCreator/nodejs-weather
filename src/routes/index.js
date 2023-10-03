@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', weatherController.getWeather);
 router.post(
   '/',
-  [body('city', "This field can't be empty").notEmpty()],
+  [body('city', "Input can't be empty").notEmpty()],
   weatherController.postWeather
 );
 
