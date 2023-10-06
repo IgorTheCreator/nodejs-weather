@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import { getWeatherNow } from '../utils/getWeatherNow.js';
+import { getWeatherForecast } from '../utils/getWeatherForecast.js';
 
 class weatherController {
   async getWeather(req, res) {
@@ -21,7 +22,9 @@ class weatherController {
       return res.render('index', { weather, error });
     }
 
-    if (button === 'week') {
+    if (button === 'forecast') {
+      const { weather, city: cityName, error } = await getWeatherForecast(city);
+      return res.render('index', { weather, city: cityName, error });
     }
   }
 }

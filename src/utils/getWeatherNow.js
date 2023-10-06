@@ -4,7 +4,9 @@ export const getWeatherNow = async (city) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    const weather = `It's ${data.weather[0].description}, with ${data.main.temp} degrees, ${data.main.humidity}% humidity in ${data.name}.`;
+    const weather = `It's ${data.weather[0].description}, with ${Math.round(
+      data.main.temp
+    )} degrees, ${data.main.humidity}% humidity in ${data.name}.`;
     return { weather, error: null };
   } catch (err) {
     const error = 'Something went wrong. Try again!';

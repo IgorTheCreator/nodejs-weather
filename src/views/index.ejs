@@ -33,16 +33,24 @@
           class="body__form-button"
           type="submit"
           name="button"
-          value="week"
+          value="forecast"
         >
-          Week
+          Forecast
         </button>
       </form>
     </div>
     <div class="container">
-      <% if (weather !== null) { %>
+      <% if (weather !== null) { %> <% if (Array.isArray(weather)) { %> <% for
+      (const w of weather) {%> <% const date = new Date(w.dt_txt) %> <% const
+      year = date.getFullYear() %> <% const month = date.getMonth() + 1 %> <%
+      const day = date.getDate()%> <% const forecast =
+      `${day}.${month}.${year}:It's ${w.weather[0].description}, with
+      ${Math.round( w.main.temp )} degrees, ${w.main.humidity}% humidity in
+      ${city}.`%>
+      <h3><%=forecast%></h3>
+      <% } %> <% } else {%>
       <h3><%= weather %></h3>
-      <% } %> <% if (error !== null) { %>
+      <% }%> <% } %> <% if (error !== null) { %>
       <p><%= error %></p>
       <% } %>
     </div>
