@@ -1,4 +1,4 @@
-# Express + openweathermap
+# Express + openweathermap API
 ## How to launch the app
 - Create account on openweathermap.com
 - Get API key
